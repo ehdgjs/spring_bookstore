@@ -19,7 +19,7 @@ public class Address {
 
     //사용자 아이디
     @Column(name = "USERS_ID")
-    private String userId;
+    private String usersId;
 
     //우편번호
     private Long shippingNum;
@@ -31,9 +31,9 @@ public class Address {
     private String detailAddr;
 
     @Builder
-    public Address(Long uid, String userId, Long shippingNum, String basicAddr, String detailAddr){
+    public Address(Long uid, String usersId, Long shippingNum, String basicAddr, String detailAddr){
         this.uid = uid;
-        this.userId = userId;
+        this.usersId = usersId;
         this.shippingNum = shippingNum;
         this.basicAddr = basicAddr;
         this.detailAddr = detailAddr;

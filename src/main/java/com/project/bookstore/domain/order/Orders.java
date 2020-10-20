@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Order {
+public class Orders {
 
     //주문번호
     @Id
@@ -19,7 +19,7 @@ public class Order {
 
     //사용자아이디
     @Column(name = "USERS_ID")
-    private String userId;
+    private String usersId;
 
     //주문날짜
     private String date;
@@ -40,24 +40,24 @@ public class Order {
     private Long shippingNum;
 
     //기본주소
-    private String basicAddr;
+    private String basicaddr;
 
     //상세주소
-    private String detailAddr;
+    private String detailaddr;
 
 
     @Builder
-    public Order(Long uid, String userId, String date, Long amount, String cardId, String cardType, String cardDate, Long shippingNum, String basicAddr, String detailAddr){
+    public Orders(Long uid, String usersId, String date, Long amount, String cardId, String cardType, String cardDate, Long shippingNum, String basicaddr, String detailaddr){
         this.uid= uid;
-        this.userId = userId;
+        this.usersId = usersId;
         this.date = date;
         this.amount = amount;
         this.cardId = cardId;
         this.cardType = cardType;
         this.cardDate= cardDate;
         this.shippingNum = shippingNum;
-        this.basicAddr = basicAddr;
-        this.detailAddr = detailAddr;
+        this.basicaddr = basicaddr;
+        this.detailaddr = detailaddr;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.project.bookstore.domain.card;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,4 +26,12 @@ public class Card {
 
     //카드 은행명
     private String type;
+
+    @Builder
+    public Card(String id, String usersId, String datetime, String type){
+        this.id = id;
+        this.usersId = usersId;
+        this.datetime = datetime;
+        this.type = type;
+    }
 }

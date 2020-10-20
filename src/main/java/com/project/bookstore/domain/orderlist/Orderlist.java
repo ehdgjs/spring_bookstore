@@ -1,5 +1,6 @@
 package com.project.bookstore.domain.orderlist;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,4 +17,10 @@ public class Orderlist implements Serializable {
     private OrderlistMultiid orderlistMultiid;
 
     private Long count;
+
+    @Builder
+    public Orderlist(OrderlistMultiid orderlistMultiid, Long count){
+        this.orderlistMultiid = orderlistMultiid;
+        this.count = count;
+    }
 }

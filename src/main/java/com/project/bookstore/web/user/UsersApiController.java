@@ -1,4 +1,4 @@
-package com.project.bookstore.web;
+package com.project.bookstore.web.user;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
