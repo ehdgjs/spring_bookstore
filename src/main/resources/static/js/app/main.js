@@ -7,22 +7,23 @@ var main = {
     },
     save : function () {
         var data = {
-            id: $('#InputId').val(),
-            pw: $('#InputPw').val(),
-            name: $('#InputName').val()
+            id: $('#id').val(),
+            pw: $('#pw').val(),
+            name: $('#name').val()
         };
 
         $.ajax({
             type: 'POST',
             url: '/users/signup_ok',
-            dataType: 'json',
+            dataType: 'JSON',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
             alert('회원가입 되었습니다.');
-            location.href("/users/login")
+            window.location.href("/users/login")
         }).fail(function (error) {
-            alert(error);
+            console.log(data);
+            alert(JSON.stringify(error));
         });
     }
 

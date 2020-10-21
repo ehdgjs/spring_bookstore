@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Controller
 public class UsersController {
 
-    private final UsersService usersService = null;
+    private final UsersService usersService;
 
     @GetMapping("/")
     public String main(){

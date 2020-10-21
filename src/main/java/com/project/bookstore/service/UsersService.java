@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 public class UsersService {
-    private final UsersRepository usersRepository = null;
+    private final UsersRepository usersRepository;
 
     @Transactional
     public String signup(UsersSignUpDto usersSignUpDto){
