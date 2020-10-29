@@ -1,12 +1,14 @@
 package com.project.bookstore.domain.book;
 
+import com.project.bookstore.domain.cartlist.Cartlist;
+import com.project.bookstore.domain.cartlist.MultiId;
+import com.project.bookstore.domain.orderlist.Orderlist;
+import com.project.bookstore.domain.orderlist.OrderlistMultiid;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -16,6 +18,7 @@ public class Book {
     //책번호
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "BOOK_UID")
     private Long uid;
 
     //책이름
@@ -36,7 +39,13 @@ public class Book {
     //작가
     private String bookAuthor;
 
-    public Book(Long uid, String bookName, Long bookCount, Long bookPrice, String bookDetail, String bookPublish, String bookAuthor){
+    @OneToMany(mappedBy = "book")
+    private List<Cartlist> cartlists;
+
+    @OneToMany(mappedBy = "book")
+    private List<Orderlist> orderlists;
+
+    public Book(Long uid, String bookName, Long bookCount, Long bookPrice, String bookDetail, String bookPublish, String bookAuthor, List<Cartlist> cartlists, List<Orderlist> orderlists){
         this.uid = uid;
         this.bookName = bookName;
         this.bookCount = bookCount;
@@ -44,5 +53,7 @@ public class Book {
         this.bookDetail = bookDetail;
         this.bookPublish = bookPublish;
         this.bookAuthor = bookAuthor;
+        this.cartlists = cartlists;
+        this.orderlists = orderlists;
     }
 }

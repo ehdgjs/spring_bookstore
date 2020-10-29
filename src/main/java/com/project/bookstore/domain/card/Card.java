@@ -1,12 +1,11 @@
 package com.project.bookstore.domain.card;
 
+import com.project.bookstore.domain.user.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
@@ -18,8 +17,9 @@ public class Card {
     private String id;
 
     //사용자 ID
-    @Column(name = "USERS_ID")
-    private String usersId;
+    @ManyToOne
+    @JoinColumn(name = "USERS_ID")
+    private Users users;
 
     //카드 유효기간
     private String datetime;
@@ -28,9 +28,9 @@ public class Card {
     private String type;
 
     @Builder
-    public Card(String id, String usersId, String datetime, String type){
+    public Card(String id, Users users, String datetime, String type){
         this.id = id;
-        this.usersId = usersId;
+        this.users = users;
         this.datetime = datetime;
         this.type = type;
     }

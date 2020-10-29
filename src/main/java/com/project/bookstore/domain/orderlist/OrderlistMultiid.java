@@ -1,13 +1,16 @@
 package com.project.bookstore.domain.orderlist;
 
+import com.project.bookstore.domain.book.Book;
+import com.project.bookstore.domain.order.Orders;
+
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 public class OrderlistMultiid implements Serializable {
 
-    @Column(name = "ORDER_UID")
-    private Long orderUid;
+    private Long ordersUid;
 
-    @Column(name = "BOOK_UID")
     private Long bookUid;
 }

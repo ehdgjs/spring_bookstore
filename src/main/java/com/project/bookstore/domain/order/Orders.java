@@ -1,11 +1,15 @@
 package com.project.bookstore.domain.order;
 
+import com.project.bookstore.domain.orderlist.Orderlist;
+import com.project.bookstore.domain.orderlist.OrderlistMultiid;
+import com.project.bookstore.domain.user.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.aspectj.weaver.ast.Or;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -18,8 +22,9 @@ public class Orders {
     private Long uid;
 
     //사용자아이디
-    @Column(name = "USERS_ID")
-    private String usersId;
+    @ManyToOne
+    @JoinColumn(name = "USERS_ID")
+    private Users users;
 
     //주문날짜
     private String date;
@@ -45,11 +50,14 @@ public class Orders {
     //상세주소
     private String detailaddr;
 
+    @OneToMany(mappedBy = "orders")
+    private List<Orderlist> orderlists;
+
 
     @Builder
-    public Orders(Long uid, String usersId, String date, Long amount, String cardId, String cardType, String cardDate, Long shippingNum, String basicaddr, String detailaddr){
+    public Orders(Long uid, Users users, String date, Long amount, String cardId, String cardType, String cardDate, Long shippingNum, String basicaddr, String detailaddr, List<Orderlist> orderlists){
         this.uid= uid;
-        this.usersId = usersId;
+        this.users = users;
         this.date = date;
         this.amount = amount;
         this.cardId = cardId;
@@ -58,6 +66,7 @@ public class Orders {
         this.shippingNum = shippingNum;
         this.basicaddr = basicaddr;
         this.detailaddr = detailaddr;
+        this.orderlists = orderlists;
     }
 
 }

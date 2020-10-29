@@ -1,11 +1,12 @@
 package com.project.bookstore.domain.orderlist;
 
+import com.project.bookstore.domain.book.Book;
+import com.project.bookstore.domain.order.Orders;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
@@ -17,6 +18,16 @@ public class Orderlist implements Serializable {
     private OrderlistMultiid orderlistMultiid;
 
     private Long count;
+
+    @MapsId("ordersUid")
+    @ManyToOne
+    @JoinColumn(name = "ORDERS_UID")
+    private Orders orders;
+
+    @MapsId("bookUid")
+    @ManyToOne
+    @JoinColumn(name = "BOOK_UID")
+    private Book book;
 
     @Builder
     public Orderlist(OrderlistMultiid orderlistMultiid, Long count){

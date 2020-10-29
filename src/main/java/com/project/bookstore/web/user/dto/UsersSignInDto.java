@@ -1,0 +1,19 @@
+package com.project.bookstore.web.user.dto;
+
+import com.project.bookstore.domain.user.Users;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class UsersSignInDto {
+    private String id;
+    private String pw;
+
+    public Users toEntity(){
+        return Users.builder()
+                .id(id).pw(pw).build();
+    }
+}
