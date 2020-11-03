@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.UsersService;
 import com.project.bookstore.session.UsersInfo;
+import com.project.bookstore.web.user.dto.AddrInfoDto;
+import com.project.bookstore.web.user.dto.CardInfoDto;
 import com.project.bookstore.web.user.dto.UsersSignInDto;
 import com.project.bookstore.web.user.dto.UsersSignUpDto;
 
@@ -52,6 +54,37 @@ public class UsersApiController {
     @PostMapping("/signup_ok")
     public String signupPosts(@RequestBody UsersSignUpDto usersSignUpDto){
         return usersService.signup(usersSignUpDto);
+    }
+
+    @ApiOperation(value = "카드추가")
+    @PostMapping("/addCard")
+    public ResponseEntity<?> addCard(@RequestBody CardInfoDto cardInfoDto){
+        ApiResponse result = null;
+        try {
+            cardInfoDto.setUsers(usersService.findUsers(usersInfo));
+            result = new ApiResponse(true, "성공", usersService.addCard(cardInfoDto));
+            return ResponseEntity.ok().body(result);
+        }catch (Exception e){
+            e.printStackTrace();
+            result = new ApiResponse(false, e.getMessage(), null);
+            return ResponseEntity.badRequest().body(result);
+        }
+
+    }
+
+    @ApiOperation(value = "주소추가")
+    @PostMapping("/addAddr")
+    public ResponseEntity<?> addAddr(@RequestBody AddrInfoDto addrInfoDto){
+        ApiResponse result = null;
+        try {
+            addrInfoDto.setUsers(usersService.findUsers(usersInfo));
+            result = new ApiResponse(true, "성공", usersService.addAddr(addrInfoDto));
+            return ResponseEntity.ok().body(result);
+        }catch (Exception e){
+            e.printStackTrace();
+            result = new ApiResponse(false, e.getMessage(), null);
+            return ResponseEntity.badRequest().body(result);
+        }
     }
 
     @PostMapping("/logout")
