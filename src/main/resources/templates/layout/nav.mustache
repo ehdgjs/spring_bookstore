@@ -6,5 +6,10 @@
         <a class="p-2 text-dark" href="#">Support</a>
         <a class="p-2 text-dark" href="/users/signUp">Pricing</a>
     </nav>
-    <a class="btn btn-outline-primary" href="/users/login" role="button" class="btn btn-primary">로그인</a>
+    {{#userid}}
+        <a class="btn btn-outline-primary" id="btn-logout" role="button" class="btn btn-primary">로그아웃</a>
+    {{/userid}}
+    {{^userid}}
+        <a class="btn btn-outline-primary" href="/users/login" role="button" class="btn btn-primary">로그인</a>
+    {{/userid}}
 </div>
