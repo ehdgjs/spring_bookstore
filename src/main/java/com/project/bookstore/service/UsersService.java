@@ -56,6 +56,11 @@ public class UsersService {
         return cardRepository.save(cardInfoDto.toEntity()).getId();
     }
 
+    @Transactional
+    public void deleteCard(String cardId) {
+        cardRepository.delete(cardRepository.findById(cardId).get());
+    }
+
     @Transactional(readOnly = true)
     public List<Address> findAllAddr(UsersInfo usersInfo){
         return addressRepository.findAllByUsers_Id(usersInfo.getUserId());
@@ -64,6 +69,11 @@ public class UsersService {
     @Transactional
     public Long addAddr(AddrInfoDto addrInfoDto){
         return addressRepository.save(addrInfoDto.toEntity()).getUid();
+    }
+
+    @Transactional
+    public void deleteAddr(Long addrUid){
+        addressRepository.delete(addressRepository.findById(addrUid).get());
     }
 
 }

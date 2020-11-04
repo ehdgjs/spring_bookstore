@@ -18,6 +18,9 @@
                 <td>{{type}}</td>
                 <td>{{id}}</td>
                 <td>{{datetime}}</td>
+                <form method="post" action="/users/deleteCard/{{id}}">
+                    <td><input type="submit" class="btn btn-danger" value="삭제"/></td>
+                </form>
             </tr>
             {{/cardInfo}}
             </tbody>
@@ -41,6 +44,9 @@
                 <td>{{shippingNum}}</td>
                 <td>{{basicAddr}}</td>
                 <td>{{detailAddr}}</td>
+                <form method="post" action="/users/deleteAddr/{{uid}}">
+                    <td><input type="submit" class="btn btn-danger" value="삭제"/></td>
+                </form>
             </tr>
         {{/addrInfo}}
         </tbody>

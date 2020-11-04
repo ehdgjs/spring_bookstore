@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.swing.text.html.parser.Parser;
 
@@ -72,6 +73,13 @@ public class UsersApiController {
 
     }
 
+    @ApiOperation(value = "카드삭제")
+    @PostMapping("/deleteCard/{cardId}")
+    public RedirectView deleteCard(@PathVariable("cardId") String cardid){
+        usersService.deleteCard(cardid);
+        return new RedirectView("/users/mypage");
+    }
+
     @ApiOperation(value = "주소추가")
     @PostMapping("/addAddr")
     public ResponseEntity<?> addAddr(@RequestBody AddrInfoDto addrInfoDto){
@@ -85,6 +93,13 @@ public class UsersApiController {
             result = new ApiResponse(false, e.getMessage(), null);
             return ResponseEntity.badRequest().body(result);
         }
+    }
+
+    @ApiOperation(value = "주소삭제")
+    @PostMapping("/deleteAddr/{addrUid}")
+    public RedirectView deleteAddr(@PathVariable("addrUid") Long uid){
+        usersService.deleteAddr(uid);
+        return new RedirectView("/users/mypage");
     }
 
     @PostMapping("/logout")

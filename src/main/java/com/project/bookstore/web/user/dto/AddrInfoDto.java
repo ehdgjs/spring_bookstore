@@ -10,12 +10,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class AddrInfoDto {
+    private Long uid;
     private String basic_addr;
     private String detail_addr;
     private Long shipping_num;
     private Users users;
 
     public Address toEntity(){
-        return Address.builder().basicAddr(basic_addr).detailAddr(detail_addr).shippingNum(shipping_num).users(users).build();
+        return Address.builder().uid(uid).basicAddr(basic_addr).detailAddr(detail_addr).shippingNum(shipping_num).users(users).build();
     }
 }
