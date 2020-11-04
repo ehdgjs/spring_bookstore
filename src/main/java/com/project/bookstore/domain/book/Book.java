@@ -4,6 +4,7 @@ import com.project.bookstore.domain.cartlist.Cartlist;
 import com.project.bookstore.domain.cartlist.MultiId;
 import com.project.bookstore.domain.orderlist.Orderlist;
 import com.project.bookstore.domain.orderlist.OrderlistMultiid;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -45,6 +46,7 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Orderlist> orderlists;
 
+    @Builder
     public Book(Long uid, String bookName, Long bookCount, Long bookPrice, String bookDetail, String bookPublish, String bookAuthor, List<Cartlist> cartlists, List<Orderlist> orderlists){
         this.uid = uid;
         this.bookName = bookName;

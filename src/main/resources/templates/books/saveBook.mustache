@@ -1,0 +1,36 @@
+{{>layout/header}}
+{{>layout/nav}}
+<h1>도서등록</h1>
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label for="book_name">도서명</label>
+                <input type="text" class="form-control" id="book_name" placeholder="책제목을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="book_author">저자</label>
+                <input type="text" class="form-control" id="book_author" placeholder="저자를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="book_publish">출판사</label>
+                <input type="text" class="form-control" id="book_publish" placeholder="출판사를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="book_price">가격</label>
+                <input type="text" class="form-control" id="book_price" placeholder="가격 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="book_count">수량</label>
+                <input type="text" class="form-control" id="book_count" placeholder="가격 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="book_detail">상세정보</label>
+                <input type="text" class="form-control" id="book_detail" placeholder="상세정보를 입력하세요">
+            </div>
+        </form>
+        <a href="/" role="button" class="btn btn-secondary">취소</a>
+        <button type="button" class="btn btn-primary" id="btn-booksSave">등록 완료</button>
+    </div>
+</div>
+{{>layout/footer}}
