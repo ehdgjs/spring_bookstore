@@ -1,5 +1,6 @@
 package com.project.bookstore.web.user;
 
+import com.project.bookstore.service.BookService;
 import com.project.bookstore.service.UsersService;
 import com.project.bookstore.session.UsersInfo;
 import lombok.AllArgsConstructor;
@@ -16,10 +17,12 @@ public class UsersController {
 
     private final UsersService usersService;
     private final UsersInfo usersInfo;
+    private final BookService bookService;
 
     @GetMapping("/")
     public String main(Model model){
         model.addAttribute("userid", usersInfo.getUserId());
+        model.addAttribute("bookInfo", bookService.findAllBook());
         return "main";
     }
 

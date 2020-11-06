@@ -1,0 +1,50 @@
+{{>layout/header}}
+{{>layout/nav}}
+<main role="main" class="container">
+    {{#bookInfo}}
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-3 mb-4 border-bottom">
+                책 정보
+            </h3>
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{bookName}}</h2>
+                <div class="ml-1 row d-flex justify-content-between">
+                    <p class="blog-post-meta"><strong>작가</strong> : {{bookAuthor}}</p>
+                    <p class="blog-post-meta"><strong>출판사</strong> : {{bookPublish}}</p>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <h4 id="bookPrice">{{bookPrice}}</h4><h3>원</h3>
+                </div>
+                <hr>
+                <p>
+                    {{bookDetail}}
+                </p>
+
+
+            </div>
+        </div>
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded">
+                <h4 class="mb-2">주문</h4>
+                <hr>
+                <div class="mb-2 row d-flex justify-content-end">
+                    <input type="number" id="count" value="1" min="1" max="{{bookCount}}"/>
+                    <h4>권</h4>
+                </div>
+                <div id="total"></div>
+                <div class="btn-group-lg-vertical">
+                    <button class="btn btn-outline-secondary btn-lg btn-block">장바구니 추가</button>
+                    <button class="btn btn-outline-secondary btn-lg btn-block">주문하기</button>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+    {{/bookInfo}}
+</main>
+
+<script src="/js/app/detailBook.js"></script>
+
+{{>layout/footer}}

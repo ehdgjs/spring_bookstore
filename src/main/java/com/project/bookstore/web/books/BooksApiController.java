@@ -1,9 +1,8 @@
-package com.project.bookstore.web.user.books;
+package com.project.bookstore.web.books;
 
 import com.project.bookstore.config.ApiResponse;
-import com.project.bookstore.domain.book.BookRepository;
 import com.project.bookstore.service.BookService;
-import com.project.bookstore.web.user.books.dto.BookSaveDto;
+import com.project.bookstore.web.books.dto.BookSaveDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
