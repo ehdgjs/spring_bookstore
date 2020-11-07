@@ -25,6 +25,9 @@ var main = {
         $('#btn-booksSave').on("click", function(){
             _this.booksSave();
         })
+        $('#btn-booksUpdate').on("click", function(){
+            _this.booksUpdate();
+        })
 
 
     },
@@ -204,7 +207,31 @@ var main = {
                 console.log("222222222222222222");
                 console.log(error);
             })
-        }
+        },
+    booksUpdate : function(){
+            var data = {
+                bookName: $('#book_name').val(),
+                bookAuthor: $('#book_author').val(),
+                bookPublish: $('#book_publish').val(),
+                bookPrice: $('#book_price').val(),
+                bookCount: $('#book_count').val(),
+                bookDetail: $('#book_detail').val()
+            };
+
+            var uid = new URLSearchParams(location.search).get("uid");
+
+            $.ajax({
+                type: 'POST',
+                url: '/books/updateBooks/'+uid,
+                dataType: 'JSON',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function(){
+                window.location.href='/'
+            }).fail(function(error){
+                console.log(error);
+            })
+    }
 
 };
 

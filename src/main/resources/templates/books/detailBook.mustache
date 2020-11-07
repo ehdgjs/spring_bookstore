@@ -1,5 +1,10 @@
 {{>layout/header}}
 {{>layout/nav}}
+<div class="d-flex justify-content-end col-md-11">
+    <form action="/books/deleteBooks/{{uid}}" method="post">
+        <button type="submit" class="btn btn-lg btn-secondary">삭제</button>
+    </form>
+</div>
 <main role="main" class="container">
     {{#bookInfo}}
     <div class="row">
@@ -33,7 +38,9 @@
                     <input type="number" id="count" value="1" min="1" max="{{bookCount}}"/>
                     <h4>권</h4>
                 </div>
-                <div id="total"></div>
+                <div id="total" class="row d-flex flex-row-reverse">
+                    <h4>원</h4>
+                </div>
                 <div class="btn-group-lg-vertical">
                     <button class="btn btn-outline-secondary btn-lg btn-block">장바구니 추가</button>
                     <button class="btn btn-outline-secondary btn-lg btn-block">주문하기</button>

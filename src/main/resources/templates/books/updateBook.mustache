@@ -1,0 +1,40 @@
+{{>layout/header}}
+{{>layout/nav}}
+<div class="container">
+    <div class="col-md-10">
+        <h1>도서수정</h1>
+        <div class="col-md-10">
+            {{#bookInfo}}
+                <form method="post">
+                    <div class="form-group">
+                        <label for="book_name">도서명</label>
+                        <input type="text" class="form-control" id="book_name" value="{{bookName}}" placeholder="책제목을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_author">저자</label>
+                        <input type="text" class="form-control" id="book_author" value="{{bookAuthor}}" placeholder="저자를 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_publish">출판사</label>
+                        <input type="text" class="form-control" id="book_publish" value="{{bookPublish}}" placeholder="출판사를 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_price">가격</label>
+                        <input type="text" class="form-control" id="book_price" value="{{bookPrice}}" placeholder="가격을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_count">수량</label>
+                        <input type="text" class="form-control" id="book_count" value="{{bookCount}}" placeholder="수량을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_detail">상세정보</label>
+                        <textarea class="form-control" id="book_detail" placeholder="상세정보를 입력하세요">{{bookDetail}}</textarea>
+                    </div>
+                </form>
+                <a href="/" role="button" class="btn btn-outline-danger">취소</a>
+                <button type="button" class="btn btn-outline-secondary" id="btn-booksUpdate">수정 완료</button>
+            {{/bookInfo}}
+        </div>
+    </div>
+</div>
+{{>layout/footer}}

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,5 +22,11 @@ public class BooksController {
     public String bookdetail(@PathVariable("uid") Long uid, Model model) {
         model.addAttribute("bookInfo",bookService.findBookById(uid));
         return "books/detailBook";
+    }
+
+    @GetMapping("/books/bookupdate")
+    public String bookupdate(@RequestParam(value="uid") Long uid, Model model){
+        model.addAttribute("bookInfo", bookService.findBookById(uid));
+        return "books/updateBook";
     }
 }
