@@ -40,7 +40,7 @@ var main = {
 
         $.ajax({
             type: 'POST',
-            url: '/users/signup_ok',
+            url: '/users/signup',
             dataType: 'JSON',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)

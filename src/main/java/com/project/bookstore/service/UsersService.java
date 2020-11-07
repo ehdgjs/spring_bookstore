@@ -37,13 +37,9 @@ public class UsersService {
 
     @Transactional(readOnly = true)
     public boolean signin(UsersSignInDto usersSignInDto){
-        try {
-            String dbResultPw = usersRepository.getOne(usersSignInDto.getId()).getPw();
-            String bodyResultPw = usersSignInDto.getPw();
-            return dbResultPw.equals(bodyResultPw);
-        } catch (Exception e){
-            return false;
-        }
+        String dbResultPw = usersRepository.getOne(usersSignInDto.getId()).getPw();
+        String bodyResultPw = usersSignInDto.getPw();
+        return dbResultPw.equals(bodyResultPw);
     }
 
     @Transactional(readOnly = true)

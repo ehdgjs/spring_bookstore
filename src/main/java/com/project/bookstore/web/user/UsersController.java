@@ -23,6 +23,11 @@ public class UsersController {
     public String main(Model model){
         model.addAttribute("userid", usersInfo.getUserId());
         model.addAttribute("bookInfo", bookService.findAllBook());
+        if(usersInfo.getUserId() != null){
+            if(usersInfo.getUserId().equals("master")){
+                model.addAttribute("master", usersInfo.getUserId());
+            }
+        }
         return "main";
     }
 

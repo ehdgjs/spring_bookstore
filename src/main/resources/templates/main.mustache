@@ -1,7 +1,11 @@
 {{>layout/header}}
 {{>layout/nav}}
 <div>
-    <a class="btn btn-outline-secondary float-right mr-4" href="/books/booksave">책 등록</a>
+    {{#master}}
+        <a class="btn btn-outline-secondary float-right mr-4" href="/books/booksave">책 등록</a>
+    {{/master}}
+    {{^master}}
+    {{/master}}
 </div>
 <div class="album py-5 bg-light">
     <div class="container">

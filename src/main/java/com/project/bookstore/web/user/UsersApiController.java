@@ -52,9 +52,17 @@ public class UsersApiController {
 //    @ApiImplicitParams({
 //            @ApiImplicitParam(name = "title", value = "제목", required = true, dataType = "string", paramType = "query", defaultValue = ""),
 //            @ApiImplicitParam(name = "content", value = "로그인", required = true, dataType = "string", paramType = "query", defaultValue = ""), })
-    @PostMapping("/signup_ok")
-    public String signupPosts(@RequestBody UsersSignUpDto usersSignUpDto){
-        return usersService.signup(usersSignUpDto);
+    @PostMapping("/signup")
+    public ResponseEntity<?> signupPosts(@RequestBody UsersSignUpDto usersSignUpDto){
+        ApiResponse result = null;
+        try {
+            result = new ApiResponse(true, "성공", usersService.signup(usersSignUpDto));
+            return ResponseEntity.ok().body(result);
+        }catch (Exception e){
+            e.printStackTrace();
+            result = new ApiResponse(false, e.getMessage(), null);
+            return ResponseEntity.badRequest().body(result);
+        }
     }
 
     @ApiOperation(value = "카드추가")
