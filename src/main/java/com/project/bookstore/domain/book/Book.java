@@ -4,6 +4,7 @@ import com.project.bookstore.domain.cartlist.Cartlist;
 import com.project.bookstore.domain.cartlist.MultiId;
 import com.project.bookstore.domain.orderlist.Orderlist;
 import com.project.bookstore.domain.orderlist.OrderlistMultiid;
+import com.project.bookstore.web.books.dto.BookUpdateDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -57,5 +58,14 @@ public class Book {
         this.bookAuthor = bookAuthor;
         this.cartlists = cartlists;
         this.orderlists = orderlists;
+    }
+
+    public void updateBook(BookUpdateDto bookUpdateDto){
+        this.bookName = bookUpdateDto.getBookName();
+        this.bookCount = bookUpdateDto.getBookCount();
+        this.bookPrice = bookUpdateDto.getBookPrice();
+        this.bookDetail = bookUpdateDto.getBookDetail();
+        this.bookPublish = bookUpdateDto.getBookPublish();
+        this.bookAuthor = bookUpdateDto.getBookAuthor();
     }
 }

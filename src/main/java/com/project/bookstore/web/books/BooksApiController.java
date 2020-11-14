@@ -38,7 +38,8 @@ public class BooksApiController {
         ApiResponse result = null;
         bookUpdateDto.setUid(uid);
         try {
-            result = new ApiResponse(true, "성공", bookService.updateBook(bookUpdateDto));
+            bookService.updateBook(uid, bookUpdateDto);
+            result = new ApiResponse(true, "성공",bookService.findBookById(uid));
             return ResponseEntity.ok().body(result);
         }catch (Exception e){
             e.printStackTrace();

@@ -20,28 +20,38 @@ public class BookService {
     private final CartRepository cartRepository;
     private final UsersInfo usersInfo;
 
+    //책 등록
     @Transactional
     public String saveBook(BookSaveDto bookSaveDto){
         return bookRepository.save(bookSaveDto.toEntity()).toString();
     }
 
+    //모든 책 찾기
     @Transactional(readOnly = true)
     public List<Book> findAllBook(){
         return bookRepository.findAll();
     }
 
+    //bookUid로 책 찾기
     @Transactional(readOnly = true)
     public Book findBookById(Long bookUid){
         return bookRepository.findById(bookUid).get();
     }
 
+    //책 정보 업데이트
     @Transactional
-    public String updateBook(BookUpdateDto bookUpdateDto){
-         return bookRepository.save(bookUpdateDto.toEntity()).toString();
+    public void  updateBook(Long bookUid, BookUpdateDto bookUpdateDto){
+        findBookById(bookUid).updateBook(bookUpdateDto);
     }
 
+    //책 삭제
     @Transactional
     public void deleteBook(Long uid){
         bookRepository.delete(findBookById(uid));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Book> findBookByLike(String name){
+        return bookRepository.findAllByBookNameIgnoreCaseContainingOrBookAuthorIgnoreCaseContainingOrBookPublishIgnoreCaseContaining(name, name, name);
     }
 }

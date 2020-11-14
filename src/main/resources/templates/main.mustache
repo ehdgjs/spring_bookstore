@@ -1,5 +1,13 @@
 {{>layout/header}}
 {{>layout/nav}}
+<div class="container col-md-4">
+        <div class="input-group mb-3">
+            <input class="form-control" type="text" id="search" placeholder="검색어를 입력해주세요."/>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="btn-searchBook">검색</button>
+            </div>
+        </div>
+</div>
 <div>
     {{#master}}
         <a class="btn btn-outline-secondary float-right mr-4" href="/books/booksave">책 등록</a>

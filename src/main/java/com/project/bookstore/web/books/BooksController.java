@@ -37,4 +37,11 @@ public class BooksController {
         model.addAttribute("bookInfo", bookService.findBookById(uid));
         return "books/updateBook";
     }
+
+    @GetMapping("/books/bookSearch")
+    public String booksearch(@RequestParam(value = "sn") String search, Model model){
+        model.addAttribute("userid", usersInfo.getUserId());
+        model.addAttribute("bookInfo",bookService.findBookByLike(search));
+        return "books/searchBook";
+    }
 }

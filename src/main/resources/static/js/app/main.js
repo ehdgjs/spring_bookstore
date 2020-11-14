@@ -28,9 +28,13 @@ var main = {
         $('#btn-booksUpdate').on("click", function(){
             _this.booksUpdate();
         })
+        $('#btn-searchBook').on("click", function(){
+            _this.searchBook();
+        })
         $('#btn-addCart').on("click", function(){
             _this.addCart();
         })
+
 
     },
     save : function () {
@@ -237,25 +241,34 @@ var main = {
                 console.log(error);
             })
     },
+    searchBook : function(){
+            var searchVal = $('#search').val();
+
+            window.location.href = '/books/bookSearch?sn='+searchVal;
+//            $.ajax({
+//                type: 'GET',
+//                url: '/books/bookSearch?s='+searchVal,
+//            })
+    },
     addCart : function(){
-        var data = {
-            bookCount : $('#count').val()
-        };
+            var data = {
+                bookCount : $('#count').val()
+            };
 
-        var uid = new URLSearchParams(location.search).get("uid");
+            var uid = new URLSearchParams(location.search).get("uid");
 
-        $.ajax({
-            type: 'POST',
-            url: '/cart/addCartlist/'+uid,
-            dataType: 'JSON',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(data)
-        }).done(function(){
-            alert("장바구니에 추가되었습니다.")
-            window.location.href='/'
-        }).fail(function(error){
-            console.log(error);
-        })
+            $.ajax({
+                type: 'POST',
+                url: '/cart/addCartlist/'+uid,
+                dataType: 'JSON',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function(){
+                alert("장바구니에 추가되었습니다.")
+                window.location.href='/'
+            }).fail(function(error){
+                console.log(error);
+            })
     }
 
 };
