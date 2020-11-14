@@ -1,6 +1,7 @@
 package com.project.bookstore.web.books;
 
 import com.project.bookstore.service.BookService;
+import com.project.bookstore.session.UsersInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,20 +13,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class BooksController {
     private final BookService bookService;
+    private final UsersInfo usersInfo;
 
     @GetMapping("/books/booksave")
-    public String booksave(){
+    public String booksave(Model model){
+        model.addAttribute("userid", usersInfo.getUserId());
         return "books/saveBook";
     }
 
-    @GetMapping("/books/bookdetail/{uid}")
-    public String bookdetail(@PathVariable("uid") Long uid, Model model) {
+    @GetMapping("/books/bookdetail")
+    public String bookdetail(@RequestParam(value = "uid") Long uid, Model model) {
+        model.addAttribute("userid", usersInfo.getUserId());
         model.addAttribute("bookInfo",bookService.findBookById(uid));
+        if(usersInfo.getUserId() == null){
+            model.addAttribute("existSession", "notExistSession");
+        }
         return "books/detailBook";
     }
 
     @GetMapping("/books/bookupdate")
     public String bookupdate(@RequestParam(value="uid") Long uid, Model model){
+        model.addAttribute("userid", usersInfo.getUserId());
         model.addAttribute("bookInfo", bookService.findBookById(uid));
         return "books/updateBook";
     }

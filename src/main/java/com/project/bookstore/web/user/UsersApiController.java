@@ -56,8 +56,13 @@ public class UsersApiController {
     public ResponseEntity<?> signupPosts(@RequestBody UsersSignUpDto usersSignUpDto){
         ApiResponse result = null;
         try {
-            result = new ApiResponse(true, "성공", usersService.signup(usersSignUpDto));
-            return ResponseEntity.ok().body(result);
+            if(usersService.findUsersById(usersSignUpDto.getId()) == false){
+                result = new ApiResponse(true, "성공", usersService.signup(usersSignUpDto));
+                return ResponseEntity.ok().body(result);
+            }else{
+                result = new ApiResponse(false, "실패", usersService.findUsersById(usersSignUpDto.getId()));
+                return ResponseEntity.badRequest().body(result);
+            }
         }catch (Exception e){
             e.printStackTrace();
             result = new ApiResponse(false, e.getMessage(), null);

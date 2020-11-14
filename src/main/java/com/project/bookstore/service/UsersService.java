@@ -30,6 +30,16 @@ public class UsersService {
         return usersRepository.findById(usersInfo.getUserId()).get();
     }
 
+    @Transactional(readOnly = true)
+    public boolean findUsersById(String id) {
+        if(usersRepository.findById(id).isEmpty()){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
     @Transactional
     public String signup(UsersSignUpDto usersSignUpDto){
         return usersRepository.save(usersSignUpDto.toEntity()).getId();

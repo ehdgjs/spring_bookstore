@@ -28,7 +28,9 @@ var main = {
         $('#btn-booksUpdate').on("click", function(){
             _this.booksUpdate();
         })
-
+        $('#btn-addCart').on("click", function(){
+            _this.addCart();
+        })
 
     },
     save : function () {
@@ -46,10 +48,13 @@ var main = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('회원가입 되었습니다.');
-            window.location.href("/users/login")
+            window.location.href = "/users/login"
         }).fail(function (error) {
-            console.log(data);
-            alert(JSON.stringify(error));
+            if(data.id == ""){
+                alert("정보를 입력해주세요.");
+            }else{
+                alert("이미 존재하는 아이디입니다.")
+            }
         });
     },
     login : function(){
@@ -231,6 +236,26 @@ var main = {
             }).fail(function(error){
                 console.log(error);
             })
+    },
+    addCart : function(){
+        var data = {
+            bookCount : $('#count').val()
+        };
+
+        var uid = new URLSearchParams(location.search).get("uid");
+
+        $.ajax({
+            type: 'POST',
+            url: '/cart/addCartlist/'+uid,
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function(){
+            alert("장바구니에 추가되었습니다.")
+            window.location.href='/'
+        }).fail(function(error){
+            console.log(error);
+        })
     }
 
 };

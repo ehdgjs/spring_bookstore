@@ -46,5 +46,4 @@ public class UsersController {
         return "users/mypage";
     }
 
-
 }

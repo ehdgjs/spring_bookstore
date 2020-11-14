@@ -3,6 +3,7 @@ package com.project.bookstore.domain.cartlist;
 import com.project.bookstore.domain.book.Book;
 import com.project.bookstore.domain.cart.Cart;
 import lombok.Data;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

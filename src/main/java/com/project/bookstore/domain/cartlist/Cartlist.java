@@ -31,8 +31,10 @@ public class Cartlist implements Serializable {
 
 
     @Builder
-    public Cartlist(MultiId multiId, Long bookCount){
+    public Cartlist(MultiId multiId, Long bookCount, Cart cart,Book book){
         this.multiId = multiId;
         this.bookCount = bookCount;
+        this.book = book;
+        this.cart = cart;
     }
 }

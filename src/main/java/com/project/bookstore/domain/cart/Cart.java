@@ -43,4 +43,8 @@ public class Cart {
         this.modifytime = modifytime;
         this.cartlists = cartlists;
     }
+
+    public void updateModifytime(String modifytime){
+        this.modifytime = modifytime;
+    }
 }
