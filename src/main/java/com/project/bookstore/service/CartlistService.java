@@ -1,5 +1,6 @@
 package com.project.bookstore.service;
 
+import com.project.bookstore.domain.book.Book;
 import com.project.bookstore.domain.book.BookRepository;
 import com.project.bookstore.domain.cart.Cart;
 import com.project.bookstore.domain.cart.CartRepository;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -80,6 +82,16 @@ public class CartlistService {
     public List<Cartlist> findByCartuid(){
         Long cartUid = cartfindByUser().getUid();
         return cartlistRepository.findAllByCart_Uid(cartUid);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Book> findByBookuidToCartlist(List<Cartlist> cartlists){
+        List<Book> bookList = new ArrayList<>();
+        for (Cartlist cartlist : cartlists) {
+            Book book = bookRepository.findById(cartlist.getBook().getUid()).get();
+            bookList.add(book);
+        }
+        return bookList;
     }
 
 }
