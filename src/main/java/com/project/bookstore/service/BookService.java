@@ -50,6 +50,7 @@ public class BookService {
         bookRepository.delete(findBookById(uid));
     }
 
+    //책 검색
     @Transactional(readOnly = true)
     public List<Book> findBookByLike(String name){
         return bookRepository.findAllByBookNameIgnoreCaseContainingOrBookAuthorIgnoreCaseContainingOrBookPublishIgnoreCaseContaining(name, name, name);

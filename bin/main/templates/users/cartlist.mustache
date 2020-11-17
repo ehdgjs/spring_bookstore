@@ -1,0 +1,44 @@
+{{>layout/header}}
+{{>layout/nav}}
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <h3>장바구니</h3>
+    </div>
+    <div>
+        <div class="row">
+            <div class="mr-2">
+                <input type="checkbox"/>
+            </div>
+            <div>
+                <p>모두 선택</p>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-md-1 border-right d-flex align-items-center justify-content-center">
+                    <input type="checkbox"/>
+                </div>
+                <div class="col-md-5 border-right ">
+                    <div>책 이름: </div>
+                    <div>작가: </div>
+                </div>
+                <div class="col-md-3 border-right d-flex align-items-center">
+                    <div>금액</div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <button type="button" class="btn btn-outline-danger">삭제</button>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <h4>합계 : 1234</h4>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <div class="btn-group">
+            <button type="button"class="btn btn-lg btn-outline-secondary">주문</button>
+            <button type="button" class="btn btn-lg btn-outline-secondary">취소</button>
+        </div>
+    </div>
+</div>
+{{>layout/footer}}

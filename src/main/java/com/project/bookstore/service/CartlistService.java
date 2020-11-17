@@ -3,6 +3,7 @@ package com.project.bookstore.service;
 import com.project.bookstore.domain.book.BookRepository;
 import com.project.bookstore.domain.cart.Cart;
 import com.project.bookstore.domain.cart.CartRepository;
+import com.project.bookstore.domain.cartlist.Cartlist;
 import com.project.bookstore.domain.cartlist.CartlistRepository;
 import com.project.bookstore.domain.cartlist.MultiId;
 import com.project.bookstore.session.UsersInfo;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -74,6 +76,10 @@ public class CartlistService {
         cart.updateModifytime(nowDate);
     }
 
-
+    @Transactional(readOnly = true)
+    public List<Cartlist> findByCartuid(){
+        Long cartUid = cartfindByUser().getUid();
+        return cartlistRepository.findAllByCart_Uid(cartUid);
+    }
 
 }
