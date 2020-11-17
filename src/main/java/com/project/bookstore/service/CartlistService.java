@@ -84,14 +84,4 @@ public class CartlistService {
         return cartlistRepository.findAllByCart_Uid(cartUid);
     }
 
-    @Transactional(readOnly = true)
-    public List<Book> findByBookuidToCartlist(List<Cartlist> cartlists){
-        List<Book> bookList = new ArrayList<>();
-        for (Cartlist cartlist : cartlists) {
-            Book book = bookRepository.findById(cartlist.getBook().getUid()).get();
-            bookList.add(book);
-        }
-        return bookList;
-    }
-
 }
