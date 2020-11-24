@@ -50,11 +50,10 @@ public class CartlistApiController {
         }
     }
 
-    @RequestMapping(value = "/deleteCartlist", method = RequestMethod.POST)
-    @ResponseBody
-    public void deleteCartlist(@RequestParam(value = "checkArr[]") List<String> valueArr){
-        for (String a : valueArr) {
-            System.out.println(a);
+    @PostMapping(value = "/deleteCartlist")
+    public void deleteCartlist(@RequestParam(value = "checkArr[]") List<Long> valueArr){
+        for (Long string : valueArr) {
+            cartlistService.deleteCartlist(string);
         }
     }
 

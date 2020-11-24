@@ -283,13 +283,13 @@ var main = {
             $.ajax({
                 type: 'POST',
                 url: "/cart/deleteCartlist",
-                contentType: 'application/json; charset=utf-8',
-                data: {checkArr: checkValArr}
+                data: data1
             }).done(function(){
-                alert(data1.checkArr.length);
+                location.href=location.href;
             }).fail(function(err){
-                console.log(data1.checkArr);
-                console.log(err);
+                if(checkValArr.length == 0){
+                    alert("선택하신 상품이 없습니다.")
+                }
             })
     }
 

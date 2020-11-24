@@ -84,4 +84,13 @@ public class CartlistService {
         return cartlistRepository.findAllByCart_Uid(cartUid);
     }
 
+    @Transactional
+    public void deleteCartlist(Long bookUid){
+        Cart cart = cartfindByUser();
+        MultiId mId = new MultiId();
+        mId.setCartUid(cart.getUid());
+        mId.setBookUid(bookUid);
+        cartlistRepository.deleteById(mId);
+    }
+
 }
