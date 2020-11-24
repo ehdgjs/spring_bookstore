@@ -20,6 +20,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequiredArgsConstructor
 @Controller
@@ -64,6 +65,13 @@ public class UsersController {
 
 
         return "users/cartlist";
+    }
+    @GetMapping("/users")
+    @ResponseBody
+    public List<Cartlist> carlistjson(){
+        List<Cartlist> cartlists = new ArrayList<Cartlist>();
+        cartlists = cartlistService.findByCartuid();
+        return cartlists;
     }
 
 }

@@ -34,6 +34,9 @@ var main = {
         $('#btn-addCart').on("click", function(){
             _this.addCart();
         })
+        $('#btn-deleteCartlist').on("click", function(){
+            _this.deleteCartlist();
+        })
 
 
     },
@@ -268,6 +271,25 @@ var main = {
                 window.location.href='/'
             }).fail(function(error){
                 console.log(error);
+            })
+    },
+    deleteCartlist : function(){
+            var checkValArr = [];
+            $("input[name='check_name']:checked").each(function(){
+                checkValArr.push($(this).val());
+            })
+            console.log(checkValArr);
+            var data1 = {checkArr: checkValArr}
+            $.ajax({
+                type: 'POST',
+                url: "/cart/deleteCartlist",
+                contentType: 'application/json; charset=utf-8',
+                data: {checkArr: checkValArr}
+            }).done(function(){
+                alert(data1.checkArr.length);
+            }).fail(function(err){
+                console.log(data1.checkArr);
+                console.log(err);
             })
     }
 

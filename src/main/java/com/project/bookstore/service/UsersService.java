@@ -4,6 +4,7 @@ import com.project.bookstore.domain.address.Address;
 import com.project.bookstore.domain.address.AddressRepository;
 import com.project.bookstore.domain.card.Card;
 import com.project.bookstore.domain.card.CardRepository;
+import com.project.bookstore.domain.cart.CartRepository;
 import com.project.bookstore.domain.user.Users;
 import com.project.bookstore.domain.user.UsersRepository;
 import com.project.bookstore.session.UsersInfo;
