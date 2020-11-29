@@ -18,8 +18,8 @@ $(function(){
     })
 })
 
-function comma(num){
-    var len, point, str;
+let comma = (num) => {
+    let len, point, str;
 
     num = num + "";
     point = num.length % 3 ;
@@ -34,4 +34,11 @@ function comma(num){
 
     return str;
 
+}
+
+let orderBtn = () => {
+    let countValue = $("#count").val();
+    let bookUid = new URLSearchParams(location.search).get("uid");
+
+    window.location.href="/orders/addOrder?bookUid="+bookUid+"&count="+countValue;
 }

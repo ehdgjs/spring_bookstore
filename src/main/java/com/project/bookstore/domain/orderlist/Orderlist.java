@@ -30,8 +30,10 @@ public class Orderlist implements Serializable {
     private Book book;
 
     @Builder
-    public Orderlist(OrderlistMultiid orderlistMultiid, Long count){
+    public Orderlist(OrderlistMultiid orderlistMultiid, Long count, Orders orders, Book book){
         this.orderlistMultiid = orderlistMultiid;
         this.count = count;
+        this.orders = orders;
+        this.book = book;
     }
 }

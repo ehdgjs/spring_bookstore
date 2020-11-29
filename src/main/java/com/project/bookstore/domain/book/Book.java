@@ -1,9 +1,8 @@
 package com.project.bookstore.domain.book;
 
 import com.project.bookstore.domain.cartlist.Cartlist;
-import com.project.bookstore.domain.cartlist.MultiId;
 import com.project.bookstore.domain.orderlist.Orderlist;
-import com.project.bookstore.domain.orderlist.OrderlistMultiid;
+import com.project.bookstore.web.books.dto.BookUpdateCountDto;
 import com.project.bookstore.web.books.dto.BookUpdateDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -67,5 +66,9 @@ public class Book {
         this.bookDetail = bookUpdateDto.getBookDetail();
         this.bookPublish = bookUpdateDto.getBookPublish();
         this.bookAuthor = bookUpdateDto.getBookAuthor();
+    }
+
+    public void updateCount(BookUpdateCountDto bookUpdateCountDto){
+        this.bookCount = bookUpdateCountDto.getBookCount();
     }
 }

@@ -1,5 +1,6 @@
 {{>layout/header}}
 {{>layout/nav}}
+<script src="/js/app/detailBook.js"></script>
 
 {{#bookInfo}}
 <div class="d-flex justify-content-end col-md-11">
@@ -53,7 +54,7 @@
                 {{^existSession}}
                     <div class="btn-group-lg-vertical">
                         <button class="btn btn-outline-secondary btn-lg btn-block" id="btn-addCart">장바구니 추가</button>
-                        <button class="btn btn-outline-secondary btn-lg btn-block">주문하기</button>
+                        <button class="btn btn-outline-secondary btn-lg btn-block" onclick=orderBtn()>주문하기</button>
                     </div>
                 {{/existSession}}
             </div>
@@ -61,7 +62,5 @@
     </div>
     {{/bookInfo}}
 </main>
-
-<script src="/js/app/detailBook.js"></script>
 
 {{>layout/footer}}

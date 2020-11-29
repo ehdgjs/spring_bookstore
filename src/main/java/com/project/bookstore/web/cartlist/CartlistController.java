@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 @RequiredArgsConstructor
 @Controller
 public class CartlistController {
-    private CartlistService cartlistService;
+    private final CartlistService cartlistService;
 
 
 }

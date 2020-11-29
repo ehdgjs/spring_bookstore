@@ -1,14 +1,12 @@
 package com.project.bookstore.domain.cart;
 
 import com.project.bookstore.domain.cartlist.Cartlist;
-import com.project.bookstore.domain.cartlist.MultiId;
 import com.project.bookstore.domain.user.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Getter

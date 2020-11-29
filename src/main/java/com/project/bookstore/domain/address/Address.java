@@ -1,7 +1,6 @@
 package com.project.bookstore.domain.address;
 
 import com.project.bookstore.domain.user.Users;
-import jdk.jfr.Name;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

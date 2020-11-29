@@ -58,6 +58,11 @@ public class UsersService {
         return cardRepository.findAllByUsers_Id(usersInfo.getUserId());
     }
 
+    @Transactional(readOnly = true)
+    public Card findCardByCardId(String cardId){
+        return cardRepository.findById(cardId).get();
+    }
+
     @Transactional
     public String addCard(CardInfoDto cardInfoDto){
         return cardRepository.save(cardInfoDto.toEntity()).getId();
@@ -71,6 +76,11 @@ public class UsersService {
     @Transactional(readOnly = true)
     public List<Address> findAllAddr(UsersInfo usersInfo){
         return addressRepository.findAllByUsers_Id(usersInfo.getUserId());
+    }
+   
+    @Transactional(readOnly = true)
+    public Address findAddrByUid(Long addrUid){
+        return addressRepository.findById(addrUid).get();
     }
 
     @Transactional

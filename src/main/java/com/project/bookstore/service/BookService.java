@@ -6,6 +6,7 @@ import com.project.bookstore.domain.cart.CartRepository;
 import com.project.bookstore.session.UsersInfo;
 import com.project.bookstore.web.books.dto.BookDeleteDto;
 import com.project.bookstore.web.books.dto.BookSaveDto;
+import com.project.bookstore.web.books.dto.BookUpdateCountDto;
 import com.project.bookstore.web.books.dto.BookUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,5 +55,10 @@ public class BookService {
     @Transactional(readOnly = true)
     public List<Book> findBookByLike(String name){
         return bookRepository.findAllByBookNameIgnoreCaseContainingOrBookAuthorIgnoreCaseContainingOrBookPublishIgnoreCaseContaining(name, name, name);
+    }
+
+    @Transactional
+    public void updateCountBook(Long uid, BookUpdateCountDto bookUpdateCountDto){
+        findBookById(uid).updateCount(bookUpdateCountDto);
     }
 }

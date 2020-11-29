@@ -37,6 +37,9 @@ var main = {
         $('#btn-deleteCartlist').on("click", function(){
             _this.deleteCartlist();
         })
+        $('#btn-order').on("click",function(){
+            _this.addOrder();
+        })
 
 
     },
@@ -291,6 +294,25 @@ var main = {
                     alert("선택하신 상품이 없습니다.")
                 }
             })
+    },
+    addOrder : function(){
+        let bookUid = new URLSearchParams(location.search).get("bookUid");
+        let count = new URLSearchParams(location.href).get("count");
+        let data = {
+            bookUid : bookUid,
+            count : count,
+            cardid : $("#cardSelect").val(),
+            addrUid : $("#addrSelect").val()
+        }
+        $.ajax({
+            type : 'POST',
+            url : '/orders/addOrder',
+            data : data
+        }).done(function(){
+            location.href='/'
+        }).fail(function(err){
+            console.log(err);
+        })
     }
 
 };
