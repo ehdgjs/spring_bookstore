@@ -19,32 +19,43 @@
             <script>
                 i++;
             </script>
-            <div class="row mb-2">
-                <div class="col-md-1 border-right d-flex align-items-center justify-content-center">
-                    <script>
-                        document.write(`<input type="checkbox" name="check_name" value="`+{{book.uid}}+`" id="checkbox`+ i +`" checked/>`)
-                    </script>
-                </div>
-                <div class="col-md-4 border-right ">
-                    <div>책 이름: {{book.bookName}}</div>
-                    <div>작가: {{book.bookAuthor}}</div>
-                </div>
-                <div class="col-md-2 border-right d-flex align-items-center">
-                    <div class="mr-1">수량: </div>
-                    <script>
-                        document.write(`<input class="col-md-8 form-control" id="bookCount`+i+`"type="number" min="1" max="`+{{book.bookCount}}+`" value="`+{{bookCount}}+`"/>`);
-                    </script>
-                </div>
-                <div class="col-md-4 d-flex align-items-center justify-content-center">
-                        <p class="mb-0 mr-2">금액: </p>
-                        <script>
-                            document.write(`<p class="mb-0" id="total`+i+`">`+
-                            multipleTotalPrice({{book.bookPrice}},i)+
-                            `</p>`)
-                        </script>
-                </div>
-            </div>
-            <hr>
+            <table class="table table-bordered table-hover text-center" id="table">
+                <tbody>
+                    <tr class="d-flex">
+                        <td class="col-md-1">
+                        <div>
+                            <script>
+                                document.write(`<input type="checkbox" name="check_name" value="`+{{book.uid}}+`" id="checkbox`+ i +`" checked/>`)
+                            </script>
+                        </div>
+                        </td>
+                        <td class="col-md-5">
+                            <div>
+                                <div>책 이름: {{book.bookName}}</div>
+                                <div>작가: {{book.bookAuthor}}</div>
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div class="row">
+                                <div class="mr-1">수량: </div>
+                                <script>
+                                    document.write(`<input class="col-md-8 form-control" name="count" id="bookCount`+i+`"type="number" min="1" max="`+{{book.bookCount}}+`" value="`+{{bookCount}}+`"/>`);
+                                </script>
+                            </div>
+                        </td>
+                        <td class="col-md-4">
+                            <div class="row d-flex justify-content-center">
+                                <p class="mb-0 mr-2">금액: </p>
+                                <script>
+                                    document.write(`<p class="mb-0 text-center" id="total`+i+`">`+
+                                    multipleTotalPrice({{book.bookPrice}},i)+
+                                    `</p>`)
+                                </script>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         {{/cartlistInfo}}
         </div>
     </div>
@@ -55,7 +66,7 @@
     </div>
     <div class="d-flex justify-content-end">
         <div class="btn-group">
-            <button type="button"class="btn btn-lg btn-outline-secondary" >주문</button>
+            <button type="button"class="btn btn-lg btn-outline-secondary" id="btn-cartlistOrder" >주문</button>
             <button type="button" class="btn btn-lg btn-outline-secondary">취소</button>
         </div>
     </div>

@@ -1,5 +1,7 @@
 package com.project.bookstore.web.orders;
 
+import java.util.List;
+
 import com.project.bookstore.service.BookService;
 import com.project.bookstore.service.OrdersService;
 import com.project.bookstore.service.UsersService;
@@ -8,6 +10,7 @@ import com.project.bookstore.session.UsersInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
@@ -29,6 +32,17 @@ public class OrdersController {
         model.addAttribute("count", count);
 
         return "orders/addOrder";
+    }
+
+    @GetMapping("/orders/addCartlistOrder")
+    public String addCartlistOrder(@RequestParam(value = "bookUid[]") List<Long> bookUid, @RequestParam(value = "count[]") Long[] count , Model model){
+        model.addAttribute("userid", usersInfo.getUserId());
+        model.addAttribute("cardInfo", usersService.findAllCard(usersInfo));
+        model.addAttribute("addrInfo", usersService.findAllAddr(usersInfo));
+        model.addAttribute("bookInfo", bookservice.findBookByArrayUid(bookUid));
+        model.addAttribute("count", count);
+
+        return "orders/addCartlistOrder";
     }
 
 

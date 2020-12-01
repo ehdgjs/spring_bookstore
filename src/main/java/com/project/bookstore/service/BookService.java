@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -60,5 +61,14 @@ public class BookService {
     @Transactional
     public void updateCountBook(Long uid, BookUpdateCountDto bookUpdateCountDto){
         findBookById(uid).updateCount(bookUpdateCountDto);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Book> findBookByArrayUid(List<Long> bookUid){
+        List<Book> arrBook = new ArrayList<Book>();
+        for (Long uid : bookUid) {
+            arrBook.add(bookRepository.getOne(uid));
+        }
+        return arrBook;
     }
 }

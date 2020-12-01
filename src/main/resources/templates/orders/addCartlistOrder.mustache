@@ -1,0 +1,109 @@
+{{>layout/header}}
+{{>layout/nav}}
+
+<div class="container">
+    <div class="d-flex justify-content-center mb-5">
+        <h4>주문</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div>
+                <table id="table" class="table table-bordered table-hover text-center">
+                    <thead>
+                        <th>상품명</th>
+                        <th>작가</th>
+                        <th>가격</th>
+                        <th>수량</th>
+                        <th>합계</th>
+                    </thead>
+                    <tbody>
+                        {{#bookInfo}}
+                            <tr>
+                                <td>{{bookName}}</td>
+                                <td>{{bookAuthor}}</td>
+                                <td class="price">{{bookPrice}}</td>
+                                <td class="count"></td>
+                                <td class="totalPrice"></td>
+                            </tr>
+                        {{/bookInfo}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="">
+                <div class="border rounded mb-3">
+                    <div class="mt-2 mb-3 d-flex justify-content-center border-bottom">
+                        <h5>카드</h5>
+                    </div>
+                    <div>
+                        <select name="cardSelect" id="cardSelect" class="custom-select">
+                            <option value="none">카드를 선택해주세요</option>
+                            {{#cardInfo}}
+                                <script>
+                                    document.write(`<option value="`+{{id}}+`">`+{{id}}+`/`+{{type}}+`</option>`);
+                                </script>
+                            {{/cardInfo}}
+                        </select>
+                    </div>
+                </div>
+                <div class="border rounded">
+                    <div class="mt-2 mb-3 d-flex justify-content-center border-bottom">
+                        <h5>주소</h5>
+                    </div>
+                    <div>
+                        <select name="addrSelect" id="addrSelect" class="custom-select">
+                            <option value="none">주소를 선택해주세요</option>
+                            {{#addrInfo}}
+                                <script>
+                                    document.write(`<option value="`+{{uid}}+`">`+{{basicAddr}}+`/`+{{detailAddr}}+`</option>`);
+                                </script>
+                            {{/addrInfo}}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 border rounded d-flex flex-column justify-content-around">
+            <div class="mt-2 d-flex justify-content-center border-bottom">
+                <h5>가격</h5>
+            </div>
+            <div class="row d-flex justify-content-between border-bottom">
+                <div class="ml-2">
+                    <span>상품단가</span>
+                </div>
+                <div class="mr-4">
+                    <strong></strong>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between border-bottom">
+                <div class="ml-2">
+                    <span>수량</span>
+                </div>
+                <div class="mr-4">
+                    <strong></strong>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between border-bottom">
+                <div class="ml-2">
+                    <span>합계</span>
+                </div>
+                <div class="mr-4">
+                    <strong>
+                        {{! <script>
+                            document.write(totalPrice);
+                        </script> }}
+                    </strong>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between">
+                <div class="col-md-6 p-1">
+                    <button class="btn btn-outline-secondary btn-block" id="btn-order">주문</button>
+                </div>
+                <div class="col-md-6 p-1">
+                    <button class="btn btn-outline-secondary btn-block" onclick=backLocation()>취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/app/addCartlistOrder.js"></script>
+{{>layout/footer}}

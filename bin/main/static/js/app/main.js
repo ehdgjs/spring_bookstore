@@ -40,7 +40,9 @@ var main = {
         $('#btn-order').on("click",function(){
             _this.addOrder();
         })
-
+        $('#btn-cartlistOrder').on("click", function(){
+            _this.addCartlistOrder();
+        })
 
     },
     save : function () {
@@ -277,12 +279,11 @@ var main = {
             })
     },
     deleteCartlist : function(){
-            var checkValArr = [];
+            let checkValArr = [];
             $("input[name='check_name']:checked").each(function(){
                 checkValArr.push($(this).val());
             })
-            console.log(checkValArr);
-            var data1 = {checkArr: checkValArr}
+            let data1 = {checkArr: checkValArr}
             $.ajax({
                 type: 'POST',
                 url: "/cart/deleteCartlist",
@@ -313,6 +314,39 @@ var main = {
         }).fail(function(err){
             console.log(err);
         })
+    },
+    addCartlistOrder : function(){
+        let bookUid = [];
+        let countValArr = new Array();
+        let checkbox = $("input[name='check_name']:checked");
+        function paramFor(data) {
+            let string = "";
+            
+            data.bookUid.forEach(a => {
+                string += "bookUid%5B%5D="+a+"&";
+            });
+
+            data.count.forEach(a =>{
+                string += "count%5B%5D="+a+"&";
+            });
+
+            return string;
+        }
+        checkbox.each(function(i){
+            bookUid.push($(this).val());
+
+            let tr = checkbox.parent().parent().parent().eq(i);
+            // console.log(tr);
+            let inputVal = tr.children().eq(2).children().eq(0).children().eq(2).val();
+
+            countValArr.push(inputVal);
+        })
+        let data = {
+            bookUid : bookUid,
+            count : countValArr
+        }
+
+        window.location.href='/orders/addCartlistOrder?'+paramFor(data)
     }
 
 };
