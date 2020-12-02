@@ -8,6 +8,8 @@ let countSet = () => {
 let countSetForUrl = (count,index) => {
     let countInHtml = document.getElementsByClassName("count");
     countInHtml[index].innerHTML = count;
+    let count1InHtml = document.getElementsByClassName("count1");
+    count1InHtml[index].innerHTML = count;
 }
 
 let totalPriceSet = () => {
@@ -22,9 +24,23 @@ let totalPriceSet = () => {
     })
 }
 
+let totalAmountSet = () => {
+    let totalAmount = document.getElementById("totalAmount");
+    let sum = 0;
+    let table = document.getElementById("table");
+    let tbody = table.children[1];
+    Array.from(tbody.children).forEach((item) => {
+        let price = item.children[4].innerHTML*1;
+        console.log(price);
+        sum = sum + price;
+    })
+    totalAmount.innerHTML = sum;
+}
+
 let init = () => {
     countSet();
     totalPriceSet();
+    totalAmountSet();
 }
 
 init()
