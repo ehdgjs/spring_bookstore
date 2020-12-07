@@ -17,13 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .disable()
             .authorizeRequests()
                 .antMatchers("/users/login")
-                .permitAll()
-            .and()
-            .formLogin()
-                .loginPage("/users/login")
-                .loginProcessingUrl("/users/login")
-                .usernameParameter("id")
-                .passwordParameter("pw");
+                .permitAll();
     }
     
 }

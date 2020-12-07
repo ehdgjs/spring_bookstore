@@ -28,6 +28,8 @@ public class UsersService {
     private final CardRepository cardRepository;
     private final AddressRepository addressRepository;
 
+    PasswordEncoding passwordEncoding = new PasswordEncoding();
+
     @Transactional(readOnly = true)
     public Users findUsers(UsersInfo usersInfo){
         return usersRepository.findById(usersInfo.getUserId()).get();
@@ -45,7 +47,6 @@ public class UsersService {
 
     @Transactional
     public String signup(UsersSignUpDto usersSignUpDto){
-        PasswordEncoding passwordEncoding = new PasswordEncoding();
         usersSignUpDto.setPw(passwordEncoding.encode(usersSignUpDto.getPw()));
         return usersRepository.save(usersSignUpDto.toEntity()).getId();
     }
@@ -54,7 +55,7 @@ public class UsersService {
     public boolean signin(UsersSignInDto usersSignInDto){
         String dbResultPw = usersRepository.getOne(usersSignInDto.getId()).getPw();
         String bodyResultPw = usersSignInDto.getPw();
-        return dbResultPw.equals(bodyResultPw);
+        return passwordEncoding.matches(bodyResultPw, dbResultPw);
     }
 
     @Transactional(readOnly = true)

@@ -1,12 +1,10 @@
 package com.project.bookstore.domain.order;
 
 import com.project.bookstore.domain.orderlist.Orderlist;
-import com.project.bookstore.domain.orderlist.OrderlistMultiid;
 import com.project.bookstore.domain.user.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 
 import javax.persistence.*;
 import java.util.List;

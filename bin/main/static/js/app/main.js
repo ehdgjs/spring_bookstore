@@ -87,7 +87,7 @@ var main = {
         }).done(function(){
             window.location.href = '/';
         }).fail(function(error){
-            console.log(data);
+            console.log(error);
             alert('아이디나 비밀번호가 틀렸습니다.');
         })
     },
