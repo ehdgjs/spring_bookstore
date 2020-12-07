@@ -30,7 +30,7 @@ public class Cart {
     //장바구니 수정일자
     private String modifytime;
 
-    @OneToMany(mappedBy = "cart")
+    @OneToMany(mappedBy = "cart", cascade = {CascadeType.REMOVE})
     private List<Cartlist> cartlists;
 
     @Builder

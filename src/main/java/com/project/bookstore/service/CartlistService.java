@@ -60,6 +60,12 @@ public class CartlistService {
     }
 
     @Transactional
+    public void deleteCart(){
+        Cart cart = cartfindByUser();
+        cartRepository.delete(cart);
+    }
+
+    @Transactional
     public String addCartlist(Long bookUid, CartlistAddDto cartlistAddDto){
         Long cartUid = cartRepository.findByUsers_Id(usersInfo.getUserId()).getUid();
         MultiId multiId = new MultiId();

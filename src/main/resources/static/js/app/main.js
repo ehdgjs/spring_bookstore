@@ -43,6 +43,9 @@ var main = {
         $('#btn-cartlistOrder').on("click", function(){
             _this.addCartlistOrder();
         })
+        $('#btn-addCartlistOrder').on("click", function() {
+            _this.addCartlistOrders();
+        })
 
     },
     save : function () {
@@ -297,8 +300,10 @@ var main = {
             })
     },
     addOrder : function(){
-        let bookUid = new URLSearchParams(location.search).get("bookUid");
-        let count = new URLSearchParams(location.href).get("count");
+        let bookUid = [];
+        let count = [];
+        bookUid.push(new URLSearchParams(location.search).get("bookUid"));
+        count.push(new URLSearchParams(location.href).get("count"));
         let data = {
             bookUid : bookUid,
             count : count,
@@ -347,6 +352,27 @@ var main = {
         }
 
         window.location.href='/orders/addCartlistOrder?'+paramFor(data)
+    },
+    addCartlistOrders: function(){
+        let bookUid = new URLSearchParams(location.search).getAll("bookUid[]");
+        let count = new URLSearchParams(location.href).getAll("count[]");
+        // bookUid.push(new URLSearchParams(location.search).getAll("bookUid[]"));
+        // count.push(new URLSearchParams(location.href).getAll("count[]"));
+        let data = {
+            bookUid : bookUid,
+            count : count,
+            cardid : $("#cardSelect").val(),
+            addrUid : $("#addrSelect").val()
+        }
+        $.ajax({
+            type : 'POST',
+            url : '/orders/cartOrder',
+            data : data
+        }).done(function(){
+            location.href='/'
+        }).fail(function(err){
+            console.log(err);
+        })
     }
 
 };

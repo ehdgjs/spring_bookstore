@@ -59,8 +59,18 @@ public class BookService {
     }
 
     @Transactional
-    public void updateCountBook(Long uid, BookUpdateCountDto bookUpdateCountDto){
-        findBookById(uid).updateCount(bookUpdateCountDto);
+    public void updateCountBook(List<Long> bookUid, List<Long> count){
+        int index = 0;
+        for (Long bookuid : bookUid) {
+            System.out.println("책 카운트 업뎃");
+            Book book = new Book();
+            book = findBookById(bookuid);
+            Long updateBookCount = book.getBookCount() - count.get(index);
+            BookUpdateCountDto bookUpdateCountDto = new BookUpdateCountDto();
+            bookUpdateCountDto.setBookCount(updateBookCount);
+            findBookById(bookuid).updateCount(bookUpdateCountDto);
+            index++;
+        }
     }
 
     @Transactional(readOnly = true)

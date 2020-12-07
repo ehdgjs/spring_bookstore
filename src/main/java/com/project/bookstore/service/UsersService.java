@@ -1,5 +1,6 @@
 package com.project.bookstore.service;
 
+import com.project.bookstore.config.PasswordEncoding;
 import com.project.bookstore.domain.address.Address;
 import com.project.bookstore.domain.address.AddressRepository;
 import com.project.bookstore.domain.card.Card;
@@ -13,6 +14,7 @@ import com.project.bookstore.web.user.dto.CardInfoDto;
 import com.project.bookstore.web.user.dto.UsersSignInDto;
 import com.project.bookstore.web.user.dto.UsersSignUpDto;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,6 +45,8 @@ public class UsersService {
 
     @Transactional
     public String signup(UsersSignUpDto usersSignUpDto){
+        PasswordEncoding passwordEncoding = new PasswordEncoding();
+        usersSignUpDto.setPw(passwordEncoding.encode(usersSignUpDto.getPw()));
         return usersRepository.save(usersSignUpDto.toEntity()).getId();
     }
 

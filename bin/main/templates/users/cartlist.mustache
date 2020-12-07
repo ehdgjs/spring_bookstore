@@ -1,5 +1,11 @@
 {{>layout/header}}
 {{>layout/nav}}
+{{^cartlistInfo}}
+    <script>
+        alert("장바구니가 비어있습니다.");
+        window.location.href = "/";
+    </script>
+{{/cartlistInfo}}
 <script src="/js/app/cartlist.js"></script>
 <div class="container">
     <div class="d-flex justify-content-center">

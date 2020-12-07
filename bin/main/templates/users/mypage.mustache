@@ -57,6 +57,22 @@
                 <div id="container-addr"></div>
             </div>
         </div>
+        <table class="table table-hover table-bordered text-center">
+            <thead>
+                <th>주문 날짜</th>
+                <th>배송지</th>
+                <th>가격</th>
+            </thead>
+            <tbody>
+                {{#orderInfo}}
+                <tr>
+                    <td>{{orderDate}}</td>
+                    <td>{{address}}</td>
+                    <td>{{price}}</td>
+                </tr>
+                {{/orderInfo}}
+            </tbody>
+        </table>
     </div>
 </div>
 {{>layout/footer}}

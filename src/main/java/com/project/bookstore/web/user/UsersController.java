@@ -9,6 +9,7 @@ import com.mysql.cj.xdevapi.JsonArray;
 import com.project.bookstore.domain.cartlist.Cartlist;
 import com.project.bookstore.service.BookService;
 import com.project.bookstore.service.CartlistService;
+import com.project.bookstore.service.OrdersService;
 import com.project.bookstore.service.UsersService;
 import com.project.bookstore.session.UsersInfo;
 
@@ -30,6 +31,7 @@ public class UsersController {
     private final UsersInfo usersInfo;
     private final BookService bookService;
     private final CartlistService cartlistService;
+    private final OrdersService ordersService;
 
     @GetMapping("/")
     public String main(Model model){
@@ -55,23 +57,18 @@ public class UsersController {
         model.addAttribute("userid", usersInfo.getUserId());
         model.addAttribute("cardInfo", usersService.findAllCard(usersInfo));
         model.addAttribute("addrInfo", usersService.findAllAddr(usersInfo));
+        model.addAttribute("orderInfo", ordersService.orderSearch());
         return "users/mypage";
     }
 
     @GetMapping("/users/cartlist")
     public String cartlist(Model model){
         model.addAttribute("userid", usersInfo.getUserId());
-        model.addAttribute("cartlistInfo", cartlistService.findByCartuid());
-
-
+        if(cartlistService.cartfindByUser() != null){
+            model.addAttribute("cartlistInfo", cartlistService.findByCartuid());
+        }
         return "users/cartlist";
     }
-    @GetMapping("/users")
-    @ResponseBody
-    public List<Cartlist> carlistjson(){
-        List<Cartlist> cartlists = new ArrayList<Cartlist>();
-        cartlists = cartlistService.findByCartuid();
-        return cartlists;
-    }
+
 
 }
