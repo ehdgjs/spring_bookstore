@@ -26,16 +26,16 @@ public class Users {
     //유저 이름
     private String name;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users", cascade = {CascadeType.REMOVE})
     private List<Card> card;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users", cascade = {CascadeType.REMOVE})
     private List<Address> address;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users", cascade = {CascadeType.REMOVE})
     private List<Cart> cart;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users", orphanRemoval = true)
     private List<Orders> orders;
 
     @Builder

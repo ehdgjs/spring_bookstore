@@ -43,7 +43,7 @@ public class Book {
     @OneToMany(mappedBy = "book", cascade = {CascadeType.REMOVE})
     private List<Cartlist> cartlists;
 
-    @OneToMany(mappedBy = "book", cascade = {CascadeType.DETACH})
+    @OneToMany(mappedBy = "book", orphanRemoval = true)
     private List<Orderlist> orderlists;
 
     @Builder

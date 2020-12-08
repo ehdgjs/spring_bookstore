@@ -1,6 +1,8 @@
 package com.project.bookstore.web.user.dto;
 
 import com.project.bookstore.domain.user.Users;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +15,13 @@ public class UsersSignUpDto {
     private String pw;
     private String name;
 
+    @Builder
+    public UsersSignUpDto(String id, String pw, String name){
+        this.id = id;
+        this.pw = pw;
+        this.name = name;
+    }
+    
     public Users toEntity(){
         return Users.builder()
                 .id(id).pw(pw).name(name).build();
