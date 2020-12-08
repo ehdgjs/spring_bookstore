@@ -19,8 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UsersApiControllerTest {
@@ -63,6 +61,8 @@ public class UsersApiControllerTest {
         assertThat(passwordEncoding.matches(pw, users.getPw())).isTrue();
         assertThat(users.getName()).isEqualTo(name);
     }
+
+
 
 
 }

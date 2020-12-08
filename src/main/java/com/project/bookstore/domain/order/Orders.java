@@ -48,7 +48,7 @@ public class Orders {
     //상세주소
     private String detailaddr;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "orders", orphanRemoval = true)
     private List<Orderlist> orderlists;
 
 
