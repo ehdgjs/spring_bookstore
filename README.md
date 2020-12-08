@@ -8,8 +8,6 @@ Spring boot를 이용하여 게시판을 구현하면서 얻은 지식을 이용
 
 * 프레임워크
   + Spring boot
-* ORM프레임워크
-  + JPA
 * 뷰
   + Mustache
   + Javascript
@@ -17,5 +15,7 @@ Spring boot를 이용하여 게시판을 구현하면서 얻은 지식을 이용
   + Mysql
 * 암호화
   + Spring security
+* ORM프레임워크
+  + JPA
 * 유닛테스트 프레임워크
   + JUnit
