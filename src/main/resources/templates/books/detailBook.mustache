@@ -3,11 +3,15 @@
 <script src="/js/app/detailBook.js"></script>
 
 {{#bookInfo}}
-<div class="d-flex justify-content-end col-md-11">
-    <form action="/books/deleteBooks/{{uid}}" method="post">
-        <button type="submit" class="btn btn-lg btn-secondary">삭제</button>
-    </form>
-</div>
+{{#master}}
+    <div class="d-flex justify-content-end col-md-11">
+        <form action="/books/deleteBooks/{{uid}}" method="post">
+            <button type="submit" class="btn btn-lg btn-secondary">삭제</button>
+        </form>
+    </div>
+{{/master}}
+{{^master}}
+{{/master}}
 <main role="main" class="container">
     <div class="row">
         <div class="col-md-8 blog-main">

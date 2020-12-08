@@ -25,6 +25,11 @@ public class BooksController {
     public String bookdetail(@RequestParam(value = "uid") Long uid, Model model) {
         model.addAttribute("userid", usersInfo.getUserId());
         model.addAttribute("bookInfo",bookService.findBookById(uid));
+        if(usersInfo.getUserId() != null){
+            if(usersInfo.getUserId().equals("master")){
+                model.addAttribute("master", usersInfo.getUserId());
+            }
+        }
         if(usersInfo.getUserId() == null){
             model.addAttribute("existSession", "notExistSession");
         }

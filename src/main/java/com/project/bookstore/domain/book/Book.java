@@ -40,10 +40,10 @@ public class Book {
     //작가
     private String bookAuthor;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.REMOVE})
     private List<Cartlist> cartlists;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.DETACH})
     private List<Orderlist> orderlists;
 
     @Builder
