@@ -1,6 +1,5 @@
 package com.project.bookstore.web.user;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.UsersService;
 import com.project.bookstore.session.UsersInfo;
@@ -12,12 +11,9 @@ import com.project.bookstore.web.user.dto.UsersSignUpDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
-import javax.swing.text.html.parser.Parser;
 
 @Api(value = "회원", description = "회원 관리", tags = { "회원" })
 @RequestMapping("/users")

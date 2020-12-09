@@ -1,12 +1,5 @@
 package com.project.bookstore.web.user;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.mysql.cj.xdevapi.JsonArray;
-import com.project.bookstore.domain.cartlist.Cartlist;
 import com.project.bookstore.service.BookService;
 import com.project.bookstore.service.CartlistService;
 import com.project.bookstore.service.OrdersService;
@@ -15,13 +8,9 @@ import com.project.bookstore.session.UsersInfo;
 
 import lombok.RequiredArgsConstructor;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequiredArgsConstructor
 @Controller

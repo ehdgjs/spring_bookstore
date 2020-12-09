@@ -1,15 +1,11 @@
 package com.project.bookstore.web.cartlist;
 
 import java.util.List;
-import java.util.Map;
 
 import com.project.bookstore.config.ApiResponse;
-import com.project.bookstore.domain.cartlist.MultiId;
 import com.project.bookstore.service.BookService;
 import com.project.bookstore.service.CartlistService;
-import com.project.bookstore.web.cartlist.dto.CartCreateDto;
 import com.project.bookstore.web.cartlist.dto.CartlistAddDto;
-import com.project.bookstore.web.cartlist.dto.CartlistDeleteDto;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Api(value = "카트", description = "카트 관리", tags = { "카트" })
 @RequestMapping("/cart")
