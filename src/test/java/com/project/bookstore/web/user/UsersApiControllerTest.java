@@ -76,6 +76,7 @@ public class UsersApiControllerTest {
     @Test
     public void login() throws Exception{
         //given
+        signup();
         String id = "test";
         String pw = "test";
 
