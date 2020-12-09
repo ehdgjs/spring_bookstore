@@ -76,7 +76,6 @@ public class BooksApiControllerTest {
         assertThat(book.getBookCount()).isEqualTo(bookCount);
         assertThat(book.getBookPrice()).isEqualTo(bookPrice);
 
-        
     }
     
 }

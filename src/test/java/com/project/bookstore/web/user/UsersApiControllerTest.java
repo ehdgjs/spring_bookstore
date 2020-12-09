@@ -2,8 +2,13 @@ package com.project.bookstore.web.user;
 
 
 import com.project.bookstore.config.PasswordEncoding;
+import com.project.bookstore.domain.card.Card;
+import com.project.bookstore.domain.card.CardRepository;
 import com.project.bookstore.domain.user.Users;
 import com.project.bookstore.domain.user.UsersRepository;
+import com.project.bookstore.session.UsersInfo;
+import com.project.bookstore.web.user.dto.CardInfoDto;
+import com.project.bookstore.web.user.dto.UsersSignInDto;
 import com.project.bookstore.web.user.dto.UsersSignUpDto;
 
 import org.junit.After;
@@ -15,6 +20,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UsersApiControllerTest {
-    
+
     @LocalServerPort
     private int port;
 
@@ -32,6 +38,11 @@ public class UsersApiControllerTest {
     @Autowired
     private UsersRepository usersRepository;
 
+    @Autowired
+    private CardRepository cardRepository;
+
+    UsersInfo usersinfo = new UsersInfo();
+    
     PasswordEncoding passwordEncoding = new PasswordEncoding();
 
     @After
@@ -40,7 +51,7 @@ public class UsersApiControllerTest {
     }
 
     @Test
-    public void 회원가입() throws Exception{
+    public void signup() throws Exception{
         //given
         String id = "test";
         String pw = "test";
@@ -62,7 +73,24 @@ public class UsersApiControllerTest {
         assertThat(users.getName()).isEqualTo(name);
     }
 
+    @Test
+    public void login() throws Exception{
+        //given
+        String id = "test";
+        String pw = "test";
 
+        UsersSignInDto uSignInDto = UsersSignInDto.builder()
+            .id(id)
+            .pw(pw)
+            .build();
+        
+        String url = "http://localhost:" + port + "/users/login";
 
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, uSignInDto, String.class);
+
+        //when
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+    }
 
 }
