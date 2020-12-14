@@ -62,9 +62,7 @@
                         <select name="cardSelect" id="cardSelect" class="custom-select">
                             <option value="none">카드를 선택해주세요</option>
                             {{#cardInfo}}
-                                <script>
-                                    document.write(`<option value="`+{{id}}+`">`+{{id}}+`/`+{{type}}+`</option>`);
-                                </script>
+                                <option value="{{id}}">{{id}} / {{type}}</option>
                             {{/cardInfo}}
                         </select>
                     </div>
@@ -77,9 +75,7 @@
                         <select name="addrSelect" id="addrSelect" class="custom-select">
                             <option value="none">주소를 선택해주세요</option>
                             {{#addrInfo}}
-                                <script>
-                                    document.write(`<option value="`+{{uid}}+`">`+{{basicAddr}}+`/`+{{detailAddr}}+`</option>`);
-                                </script>
+                                    <option value="{{uid}}">{{basicAddr}} / {{detailAddr}}</option>;
                             {{/addrInfo}}
                         </select>
                     </div>

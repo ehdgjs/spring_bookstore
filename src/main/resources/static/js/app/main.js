@@ -28,6 +28,9 @@ var main = {
         $('#btn-booksUpdate').on("click", function(){
             _this.booksUpdate();
         })
+        $('#btn-booksDelete').on("click", function(){
+            _this.booksDelete();
+        })
         $('#btn-searchBook').on("click", function(){
             _this.searchBook();
         })
@@ -250,6 +253,17 @@ var main = {
                 window.location.href='/'
             }).fail(function(error){
                 console.log(error);
+            })
+    },
+    booksDelete : function() {
+            let uid = new URLSearchParams(location.search).get("uid");
+            $.ajax({
+                type: 'POST',
+                url: '/books/deleteBooks/'+ uid,
+            }).done(function() {
+                window.location.href='/'
+            }).fail(function(err) {
+                console.log(err);
             })
     },
     searchBook : function(){
