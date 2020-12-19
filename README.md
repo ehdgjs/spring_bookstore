@@ -19,3 +19,9 @@ Spring boot를 이용하여 게시판을 구현하면서 얻은 지식을 이용
   + JPA
 * 유닛테스트 프레임워크
   + JUnit
+* Devops
+  + AWS EC2
+  + AWS S3
+  + AWS CodeDeploy
+  + Nginx
+  + travis-ci
